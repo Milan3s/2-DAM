@@ -1,0 +1,54 @@
+<odoo>
+    <data >
+        <!-- Crear Clientes -->
+        <record id="cliente_1" model="organizarcitas.cliente">
+            <field name="nombre">Juan Pérez</field>
+            <field name="correo">juan.perez@email.com</field>
+            <field name="direccion">Calle Ficticia 123</field>
+            <field name="telefono">555-1234</field>
+        </record>
+
+        <record id="cliente_2" model="organizarcitas.cliente">
+            <field name="nombre">Ana Gómez</field>
+            <field name="correo">ana.gomez@email.com</field>
+            <field name="direccion">Avenida Ejemplo 456</field>
+            <field name="telefono">555-5678</field>
+        </record>
+
+        <!-- Crear Servicios -->
+        <record id="servicio_1" model="organizarcitas.servicio">
+            <field name="nombre">Corte de cabello</field>
+            <field name="descripcion">Corte de cabello para hombres y mujeres</field>
+            <field name="precio">20.0</field>
+        </record>
+
+        <record id="servicio_2" model="organizarcitas.servicio">
+            <field name="nombre">Masajes relajantes</field>
+            <field name="descripcion">Masajes terapéuticos para relajación</field>
+            <field name="precio">50.0</field>
+        </record>
+
+        <!-- Crear Citas -->
+        <record id="cita_1" model="organizarcitas.cita">
+            <field name="nombre">Cita de Corte</field>
+            <field name="descripcion">Corte de cabello para Juan Pérez</field>
+            <field name="fecha_cita">2025-02-10 10:00:00</field>
+            <field name="duracion">1.5</field>
+            <field name="estado">abierta</field>
+            <field name="usuario_id" ref="base.user_admin"/>
+            <field name="cliente_ids" eval="[(6, 0, [ref('cliente_1')])]"/>
+            <field name="servicio_ids" eval="[(6, 0, [ref('servicio_1')])]"/>
+        </record>
+
+        <record id="cita_2" model="organizarcitas.cita">
+            <field name="nombre">Cita de Masajes</field>
+            <field name="descripcion">Masajes relajantes para Ana Gómez</field>
+            <field name="fecha_cita">2025-02-12 15:00:00</field>
+            <field name="duracion">2.0</field>
+            <field name="estado">en_progreso</field>
+            <field name="usuario_id" ref="base.user_admin"/>
+            <field name="cliente_ids" eval="[(6, 0, [ref('cliente_2')])]"/>
+            <field name="servicio_ids" eval="[(6, 0, [ref('servicio_2')])]"/>
+        </record>
+    </data>
+</odoo>
