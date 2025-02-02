@@ -1,1 +1,4 @@
-
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_cita_user,cita_user,model_organizarcitas_cita,base.group_user,1,1,1,1
+access_cliente_user,cliente_user,model_organizarcitas_cliente,base.group_user,1,1,1,1
+access_servicio_user,servicio_user,model_organizarcitas_servicio,base.group_user,1,1,1,1
