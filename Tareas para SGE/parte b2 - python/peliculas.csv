@@ -1,0 +1,3 @@
+name,director,actors,release,country,duration,rating,file
+Pulp Fiction,director_1,actor_1-actor_2,1995-01-13,Estados Unidos,154,5,videoclub/static/img/pulp.jpg
+Matrix,director_2,actor_3-actor_4,1999-03-31,Estados Unidos,136,5,videoclub/static/img/matrix.jpg
