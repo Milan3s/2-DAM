@@ -1,0 +1,148 @@
+<odoo>
+    <!-- Acción para mostrar la lista de clientes -->
+    <record id="accion_clientes" model="ir.actions.act_window">
+        <field name="name">Clientes</field>
+        <field name="res_model">organizarcitas.cliente</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Vista de lista de clientes -->
+    <record id="vista_cliente_lista" model="ir.ui.view">
+        <field name="name">cliente.tree</field>
+        <field name="model">organizarcitas.cliente</field>
+        <field name="arch" type="xml">
+            <tree string="Clientes">
+                <field name="nombre"/>
+                <field name="correo"/>
+                <field name="telefono"/>
+            </tree>
+        </field>
+    </record>
+
+    
+
+    <!-- Vista de formulario de cliente -->
+    <record id="vista_cliente_formulario" model="ir.ui.view">
+        <field name="name">cliente.form</field>
+        <field name="model">organizarcitas.cliente</field>
+        <field name="arch" type="xml">
+            <form string="Cliente">
+                <sheet>
+                    <group>
+                        <field name="nombre"/>
+                        <field name="correo"/>
+                        <field name="telefono"/>
+                        <field name="direccion"/>
+                    </group>
+                    <header>
+                        <button name="%(action_report_cliente)d" string="Imprimir Informe" type="action" class="oe_highlight"/>
+                    </header>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vista de lista de servicios -->
+    <record id="vista_servicio_lista" model="ir.ui.view">
+        <field name="name">servicio.tree</field>
+        <field name="model">organizarcitas.servicio</field>
+        <field name="arch" type="xml">
+            <tree string="Servicios">
+                <field name="nombre"/>
+                <field name="descripcion"/>
+                <field name="precio"/>               
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vista de formulario de servicio -->
+    <record id="vista_servicio_formulario" model="ir.ui.view">
+        <field name="name">servicio.form</field>
+        <field name="model">organizarcitas.servicio</field>
+        <field name="arch" type="xml">
+            <form string="Servicio">
+                <sheet>
+                    <group>
+                        <field name="nombre"/>
+                        <field name="descripcion"/>
+                        <field name="precio"/>
+                    </group>
+                    <header>
+                        <button name="%(action_report_servicio)d" string="Imprimir Informe" type="action" class="oe_highlight"/>
+                    </header>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Acción para mostrar los servicios -->
+    <record id="accion_servicios" model="ir.actions.act_window">
+        <field name="name">Servicios</field>
+        <field name="res_model">organizarcitas.servicio</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Acción para mostrar la lista de citas -->
+    <record id="accion_citas" model="ir.actions.act_window">
+        <field name="name">Citas</field>
+        <field name="res_model">organizarcitas.cita</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Vista de lista de citas -->
+    <record id="vista_cita_lista" model="ir.ui.view">
+        <field name="name">cita.tree</field>
+        <field name="model">organizarcitas.cita</field>
+        <field name="arch" type="xml">
+            <tree string="Citas">
+                <field name="nombre"/>
+                <field name="fecha_cita"/>
+                <field name="usuario_id"/>
+                <field name="cliente_nombres"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vista de formulario de cita -->
+    <record id="vista_cita_formulario" model="ir.ui.view">
+        <field name="name">cita.form</field>
+        <field name="model">organizarcitas.cita</field>
+        <field name="arch" type="xml">
+            <form string="Cita">
+                <sheet>
+                    <group>
+                        <field name="nombre"/>
+                        <field name="descripcion"/>
+                        <field name="fecha_cita"/>
+                        <field name="duracion"/>
+                        <field name="estado"/>
+                        <field name="usuario_id"/>
+                        <field name="cliente_ids"/>
+                        <field name="servicio_ids"/>
+                    </group>
+                </sheet>
+                <header>
+                    <button name="%(action_report_cita)d" string="Imprimir Informe" type="action" class="oe_highlight"/>
+                </header>
+            </form>
+        </field>
+    </record>
+
+    <!-- Menú principal de Citas -->
+    <menuitem id="menu_citas" name="Citas" sequence="10"/>
+
+    <!-- Submenú de Gestión de Citas -->
+    <menuitem id="submenu_citas" name="Gestión de Citas" parent="menu_citas" sequence="10"/>
+
+    <!-- Acciones y vistas dentro del submenú de Gestión de Citas -->
+    <menuitem id="menu_gestion_citas" name="Ver Citas" parent="submenu_citas" action="accion_citas"/>
+
+
+    <!-- Submenú de Gestión de Clientes -->
+    <menuitem id="submenu_clientes" name="Gestión de Clientes" parent="menu_citas" sequence="20"/>
+    <menuitem id="menu_clientes" name="Registro de Clientes" parent="submenu_clientes" action="accion_clientes"/>
+
+    <!-- Submenú de Gestión de Servicios -->
+    <menuitem id="submenu_servicios" name="Gestión de Servicios" parent="menu_citas" sequence="30"/>
+    <menuitem id="menu_servicios_registros" name="Registros de Servicios" parent="submenu_servicios" action="accion_servicios"/>
+</odoo>
